@@ -1,6 +1,6 @@
 /*****************************************************************************************
-*     Serial Bluetooth communication between 2 ESP32 boards - OK1TK www.ok1tk.com        *
-*                   The CLIENT (SLAVE) part code v1.21 - 01 May 2023                     *
+*     Serial Bluetooth communication between 2 ESP32 boards                              *
+*     The CLIENT (SLAVE) part code v1.0 - 18 September 2025                              *
 ******************************************************************************************/
 #include "BluetoothSerial.h"                                                  // BT: Include the Serial bluetooth library 
 #define LED_BT 2                                                              // BT: Internal LED (or LED on the pin D2) for the connection indication (connected solid/disconnected blinking)
