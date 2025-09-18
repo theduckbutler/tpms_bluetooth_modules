@@ -1,0 +1,7 @@
+This project contains two ```.ino``` files that can be uploaded to ESP32 WROOM dev boards to connect them via bluetooth. One board will act as the master while the other will act as the slave.
+
+The ```uint8_t address[6]``` in the master's code must be changed to the MAC address of the slave board. The ```String MACadd``` is purely for appearances in the serial monitor, and will not be used for checking for and connecting to the slave board.
+
+Once the master board receives its program, it will automatically start search for the slave board. Upon connection the master board will continually initiate a process to verify whether or not the boards are accurately communicating with each other. The master board will randomly generate an 8 byte value that it will then send over to the slave board. Both boards will then locally calculate a CRC32 checksum of the generated value. The slave board will then send back the checksum value it has calculated, and the master board will compare the separately calculated checksums. If both match, the communication between boards is considered to be maintained and accurate.
+
+If at any point after connecting the boards become disconnected, the master will actively try to reestablish the connection. If the slave is the board that briefly loses power and disconnects, the master board will begin the reconnection process after noticing a duplicate checksum response from the slave. If the master board briefly loses power and disconnects, it will immediately begin trying to reestablish a connection the moment it has power again.
